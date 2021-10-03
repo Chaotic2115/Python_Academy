@@ -52,6 +52,7 @@ mala_pismena = []
 if volba.isdigit():
     volba = int(volba) - 1
     for text in TEXTS:
+        text = TEXTS[volba]
         print(f"Zvolený text: \n{text}")
         print(ODDELOVAC)
         cista_slova = [slovo.strip(",.()'") for slovo in text.split()]
