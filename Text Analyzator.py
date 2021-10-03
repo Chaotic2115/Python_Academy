@@ -38,8 +38,7 @@ print(ODDELOVAC)
 if heslo == UZIVATELE.get(jmeno):
     print(f"Vítej v Text Analyzátoru, {jmeno}. \nMáš na výběr 3 texty k analýze.")
     print(ODDELOVAC)
-    volba = int(input("Zvol text k analýze(1-3): "))
-    volba -= 1
+    volba = input("Zvol text k analýze(1-3): ")
     print(ODDELOVAC)
 else:
     print("Špatné uživatelské jméno nebo heslo! \nUkončuji aplikaci!")
@@ -50,28 +49,31 @@ cislice = []
 velka_pismena = []
 mala_pismena = []
 
-for text in TEXTS:
-    print(f"Zvolený text: \n{text}")
-    print(ODDELOVAC)
-    cista_slova = [slovo.strip(",.()'") for slovo in text.split()]
-    for slovo in cista_slova:
-        if slovo.istitle():
-            prvni_velke.append(slovo)
-        elif slovo.isupper():
-            velka_pismena.append(slovo)
-        elif slovo.islower():
-            mala_pismena.append(slovo)
-        elif slovo.isdigit():
-            cislice.append(int(slovo))
-    print(f"V textu je {len(cista_slova)} slov.\n"
-          f"V textu je {len(prvni_velke)} slov začínajících na velké písmeno.\n"
-          f"V textu je {len(velka_pismena)} slov psaných velkými písmeny.\n"
-          f"V textu je {len(mala_pismena)} slov psaných malými písmeny.\n"
-          f"V textu je {len(cislice)} čísel\n"
-          f"Součet všech čísel v textu je {sum(cislice)}")
-    print(ODDELOVAC)
-    break
-
+if volba.isdigit():
+    volba = int(volba) - 1
+    for text in TEXTS:
+        print(f"Zvolený text: \n{text}")
+        print(ODDELOVAC)
+        cista_slova = [slovo.strip(",.()'") for slovo in text.split()]
+        for slovo in cista_slova:
+            if slovo.istitle():
+                prvni_velke.append(slovo)
+            elif slovo.isupper():
+                velka_pismena.append(slovo)
+            elif slovo.islower():
+                mala_pismena.append(slovo)
+            elif slovo.isdigit():
+                cislice.append(int(slovo))
+        print(f"V textu je {len(cista_slova)} slov.\n"
+              f"V textu je {len(prvni_velke)} slov začínajících na velké písmeno.\n"
+              f"V textu je {len(velka_pismena)} slov psaných velkými písmeny.\n"
+              f"V textu je {len(mala_pismena)} slov psaných malými písmeny.\n"
+              f"V textu je {len(cislice)} čísel\n"
+              f"Součet všech čísel v textu je {sum(cislice)}")
+        print(ODDELOVAC)
+        break
+else:
+    print("Neplatná volba textu!")
 
 
 
