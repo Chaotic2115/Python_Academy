@@ -81,15 +81,16 @@ if volba.isdigit():
         print("Délka | Četnost | Počet")
         print('-' * 55)
         serazena_slova = sorted(cista_slova, key=len)
-        list_slov = []
+        delka_slov = []
         slovnik_slov = {}
         for slova in serazena_slova:
-            list_slov.append(len(slova))
-            for i in list_slov:
+            delka_slov.append(len(slova))
+            for i in delka_slov:
                 slovnik_slov.setdefault(i)
-                slovnik_slov[i] = list_slov.count(i)
+                slovnik_slov[i] = delka_slov.count(i)
+        mezera = max(slovnik_slov.values())
         for klic in slovnik_slov.keys():
-            print(klic, "\t  |", "*" * slovnik_slov[klic], "|", slovnik_slov[klic])
+            print(klic, "\t  |", "*" * slovnik_slov[klic], " " * (mezera - slovnik_slov[klic]), "|", slovnik_slov[klic])
         print(ODDELOVAC)
         break
 else:
